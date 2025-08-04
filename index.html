@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷路ゲーム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+            flex-direction: column;
+        }
+        canvas {
+            border: 2px solid #333;
+            background-color: #fff;
+            max-width: 90vw;
+            max-height: 80vh;
+        }
+        #game-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        #message {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #333;
+            min-height: 2em;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        #retry-button {
+            background-color: #4CAF50;
+            color: white;
+            display: none;
+        }
+        #giveUpButton {
+            background-color: #f44336;
+            color: white;
+        }
+        #autoPlayButton {
+            background-color: #008CBA;
+            color: white;
+        }
+        #start-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .start-screen h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .control-group {
+            margin: 10px 0;
+            text-align: left;
+        }
+        .control-group label {
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+        #startButton {
+            margin-top: 20px;
+            background-color: #5cb85c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1>迷路ゲーム</h1>
+        <div class="control-group">
+            <label for="mazeSize">迷路サイズ:</label>
+            <select id="mazeSize">
+                <option value="10,10">10x10</option>
+                <option value="20,20">20x20</option>
+                <option value="30,30">30x30</option>
+                <option value="40,40">40x40</option>
+                <option value="100,100">100x100</option>
+                <option value="200,100">200x100</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="mazeAlgorithm">アルゴリズム選択:</label>
+            <select id="mazeAlgorithm">
+                <option value="dfs">DFS（簡単）</option>
+                <option value="prim">プリム法（複雑）</option>
+                <option value="recursiveDivision">穴掘り法（広い空間と長い道）</option>
+            </select>
+        </div>
+        <button id="startButton">ゲーム開始</button>
+    </div>
+
+    <div id="game-container">
+        <canvas id="mazeCanvas"></canvas>
+        <div id="message"></div>
+        <div class="controls">
+            <button id="giveUpButton">ギブアップ</button>
+            <button id="autoPlayButton">オートプレイ</button>
+            <button id="retry-button">リトライ</button>
+        </div>
+    </div>
+
+    <script src="maze.js"></script>
+</body>
+</html>
